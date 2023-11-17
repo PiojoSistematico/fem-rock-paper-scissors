@@ -1,21 +1,16 @@
 import { useState } from "react";
 
 import { Button } from "react-aria-components";
-
-import iconScissors from "./assets/images/icon-scissors.svg";
-import iconPaper from "./assets/images/icon-paper.svg";
-import iconRock from "./assets/images/icon-rock.svg";
-import iconLizard from "./assets/images/icon-lizard.svg";
-import iconSpock from "./assets/images/icon-spock.svg";
+import Game from "./components/Game";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(0);
 
   return (
     <>
-      <main>
-        <section title="score">
-          <ul>
+      <main className="h-screen font-BarlowSemiCondensed font-semibold text-base text-white bg-gradient-to-b from-radial-1 to-radial-2 p-8 flex flex-col items-center justify-between">
+        <header className="flex flex-row items-center justify-between border-4 border-solid border-header rounded-lg p-4 w-full">
+          <ul className="p-2 flex flex-col uppercase text-sm">
             <li>
               <span>Rock</span>
             </li>
@@ -32,51 +27,15 @@ function App() {
               <span>Spock</span>
             </li>
           </ul>
-          <div>
-            <span>score</span>
-            <span>points</span>
+          <div className="flex flex-col items-center bg-white w-32 h-32 rounded-md">
+            <span className="text-score-text uppercase text-sm p-2">score</span>
+            <span className="text-dark-text text-5xl">0</span>
           </div>
-        </section>
-        <section title="game">
-          <Button>
-            <img src={iconScissors} alt="icon Scissors" />
-          </Button>
-          <Button>
-            <img src={iconPaper} alt="icon Paper" />
-          </Button>
-          <Button>
-            <img src={iconRock} alt="icon Rock" />
-          </Button>
-          <Button>
-            <img src={iconLizard} alt="icon Lizard" />
-          </Button>
-          <Button>
-            <img src={iconSpock} alt="icon Spock" />
-          </Button>
-        </section>
-        <section title="game">
-          <div>
-            <img src={iconScissors} alt="icon Scissors" />
-          </div>
-          <div>
-            <img src={iconPaper} alt="icon Paper" />
-          </div>
-          <span>You Picked</span>
-          <span>The House Picked</span>
-        </section>
-        <section title="game">
-          <div>
-            <img src={iconScissors} alt="icon Scissors" />
-          </div>
-          <div>
-            <img src={iconPaper} alt="icon Paper" />
-          </div>
-          <span>You Picked</span>
-          <span>The House Picked</span>
-          <span>Result</span>
-          <Button>Play Again</Button>
-        </section>
-        <Button>Rules</Button>
+        </header>
+        <Game step={step}></Game>
+        <Button className="uppercase text-white border-2 border-solid border-white rounded-md px-4 py-2">
+          Rules
+        </Button>
       </main>
     </>
   );
