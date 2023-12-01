@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-aria-components";
 import {
   IconLizard,
@@ -7,44 +7,24 @@ import {
   IconScissors,
   IconSpock,
 } from "./Icons";
+import Step1 from "./Step1";
 
 type GameProps = {
-  step: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Game: React.FunctionComponent<GameProps> = ({ step }) => {
+const Game: React.FunctionComponent<GameProps> = ({ setScore }) => {
+  const [step, setStep] = useState(0);
+
+  function handleSelection(selection: number): void {
+    console.log(selection);
+    setStep((prev) => prev + 1);
+  }
+
   return (
     <section>
       {step == 0 ? (
-        <div className="bg-[url(src/assets/images/bg-pentagon.svg)] bg-center bg-cover bg-no-repeat h-64">
-          <Button className="rounded-full bg-scissors-2 h-24 w-24 border-b-4 border-solid border-scissors-1 p-2 flex flex-row items-center justify-center">
-            <div className="bg-white rounded-full flex flex-row items-center justify-center p-2">
-              <picture className="w-8 h-10">
-                <IconScissors></IconScissors>
-              </picture>
-            </div>
-          </Button>
-          <Button className="rounded-full bg-paper-2 h-24 w-24 border-b-4 border-solid border-paper-1 p-2 flex flex-row items-center justify-center">
-            <div className="bg-white rounded-full flex flex-row items-center justify-center p-2">
-              <IconPaper></IconPaper>
-            </div>
-          </Button>
-          <Button className="rounded-full bg-rock-2 h-24 w-24 border-b-4 border-solid border-rock-1 p-2 flex flex-row items-center justify-center">
-            <div className="bg-white rounded-full flex flex-row items-center justify-center p-2">
-              <IconRock></IconRock>
-            </div>
-          </Button>
-          <Button className="rounded-full bg-lizard-2 h-24 w-24 border-b-4 border-solid border-lizard-1 p-2 flex flex-row items-center justify-center">
-            <div className="bg-white rounded-full flex flex-row items-center justify-center p-2">
-              <IconLizard></IconLizard>
-            </div>
-          </Button>
-          <Button className="rounded-full bg-spock-2 h-24 w-24 border-b-4 border-solid border-spock-1 p-2 flex flex-row items-center justify-center">
-            <div className="bg-white rounded-full flex flex-row items-center justify-center p-2">
-              <IconSpock></IconSpock>
-            </div>
-          </Button>
-        </div>
+        <Step1 handleSelection={handleSelection}></Step1>
       ) : step == 1 ? (
         <div>
           <div>

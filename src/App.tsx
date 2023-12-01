@@ -4,7 +4,7 @@ import { Button } from "react-aria-components";
 import Game from "./components/Game";
 
 function App() {
-  const [step, setStep] = useState(0);
+  const [score, setScore] = useState(0);
 
   return (
     <>
@@ -29,10 +29,10 @@ function App() {
           </ul>
           <div className="flex flex-col items-center bg-white w-32 h-32 rounded-md">
             <span className="text-score-text uppercase text-sm p-2">score</span>
-            <span className="text-dark-text text-5xl">0</span>
+            <span className="text-dark-text text-5xl">{score}</span>
           </div>
         </header>
-        <Game step={step}></Game>
+        <Game setScore={setScore}></Game>
         <Button className="uppercase text-white border-2 border-solid border-white rounded-md px-4 py-2">
           Rules
         </Button>
