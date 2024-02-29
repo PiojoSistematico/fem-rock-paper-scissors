@@ -7,7 +7,7 @@ type Step1Props = {
 
 const Step1: React.FunctionComponent<Step1Props> = ({ handleSelection }) => {
   return (
-    <div className="relative bg-[url(src/assets/images/bg-pentagon.svg)] bg-center bg-cover bg-no-repeat h-60 w-60">
+    <div className="relative bg-[url(src/assets/images/bg-pentagon.svg)] bg-center bg-cover bg-no-repeat h-60 w-60 md:w-96 md:h-96">
       <Button
         onPress={() => handleSelection(0)}
         className="absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 "

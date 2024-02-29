@@ -32,7 +32,7 @@ const Game: React.FunctionComponent<GameProps> = ({ setScore }) => {
   const result = selection >= 0 ? points[selection][houseSelection] : 0;
 
   return (
-    <section>
+    <section className="lg:w-[900px] md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/3">
       {selection < 0 ? (
         <Step0 handleSelection={handleSelection}></Step0>
       ) : (

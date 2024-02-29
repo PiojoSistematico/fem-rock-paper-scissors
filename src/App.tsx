@@ -1,15 +1,14 @@
-import { useState } from "react";
-
-import { Button } from "react-aria-components";
 import Game from "./components/Game";
+import CustomModal from "./components/CustomModal";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useLocalStorage("score", 0);
 
   return (
     <>
-      <main className="h-screen font-BarlowSemiCondensed font-semibold text-base text-white bg-gradient-to-b from-radial-1 to-radial-2 p-8 flex flex-col items-center justify-between">
-        <header className="flex flex-row items-center justify-between border-4 border-solid border-header rounded-lg p-4 w-full">
+      <main className="relative h-screen font-BarlowSemiCondensed font-semibold text-base text-white bg-gradient-to-b from-radial-1 to-radial-2 p-8 flex flex-col items-center justify-between">
+        <header className="flex flex-row items-center justify-between border-4 border-solid border-header rounded-lg p-4 w-full md:w-3/4 lg:w-[800px]">
           <ul className="p-2 flex flex-col uppercase text-sm">
             <li>
               <span>Rock</span>
@@ -33,9 +32,8 @@ function App() {
           </div>
         </header>
         <Game setScore={setScore}></Game>
-        <Button className="uppercase text-white border-2 border-solid border-white rounded-md px-4 py-2">
-          Rules
-        </Button>
+
+        <CustomModal></CustomModal>
       </main>
     </>
   );
