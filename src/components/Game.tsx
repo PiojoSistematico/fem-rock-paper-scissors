@@ -1,53 +1,66 @@
 import React, { useState } from "react";
 import { Button } from "react-aria-components";
-import {
-  IconLizard,
-  IconPaper,
-  IconRock,
-  IconScissors,
-  IconSpock,
-} from "./Icons";
-import Step1 from "./Step1";
+import Step0 from "./Step0";
+import Selection from "./Selection";
 
 type GameProps = {
   setScore: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Game: React.FunctionComponent<GameProps> = ({ setScore }) => {
-  const [step, setStep] = useState(0);
+const points = [
+  [0, 1, -1, 1, -1],
+  [-1, 0, 1, -1, 1],
+  [1, -1, 0, 1, -1],
+  [-1, 1, -1, 0, 1],
+  [1, -1, 1, -1, 0],
+];
 
-  function handleSelection(selection: number): void {
-    console.log(selection);
-    setStep((prev) => prev + 1);
+const Game: React.FunctionComponent<GameProps> = ({ setScore }) => {
+  const [selection, setSelection] = useState(-1);
+
+  const houseSelection = Math.floor(Math.random() * 5);
+
+  function handleSelection(id: number): void {
+    setSelection(id);
   }
+
+  function playAgain(number: number): void {
+    setSelection(-1);
+    setScore((prev) => prev + number);
+  }
+
+  const result = selection >= 0 ? points[selection][houseSelection] : 0;
 
   return (
     <section>
-      {step == 0 ? (
-        <Step1 handleSelection={handleSelection}></Step1>
-      ) : step == 1 ? (
-        <div>
-          <div>
-            <IconScissors></IconScissors>
-          </div>
-          <div>
-            <IconPaper></IconPaper>
-          </div>
-          <span>You Picked</span>
-          <span>The House Picked</span>
-        </div>
+      {selection < 0 ? (
+        <Step0 handleSelection={handleSelection}></Step0>
       ) : (
-        <div>
-          <div>
-            <IconScissors></IconScissors>
+        <div className="flex flex-col gap-20 w-full">
+          <div className="flex flex-row items-center justify-between gap-20">
+            <div className="flex flex-col gap-8">
+              <Selection selection={selection}></Selection>
+              <span className="uppercase text-lg">You Picked</span>
+            </div>
+            <div className="opacity-0 flex flex-col gap-8 items-center animate-[fadeIn_300ms_ease-out_900ms_forwards]">
+              <Selection selection={houseSelection}></Selection>
+              <span className="uppercase text-lg text-center">
+                The House Picked
+              </span>
+            </div>
           </div>
-          <div>
-            <IconPaper></IconPaper>
+
+          <div className="opacity-0 flex flex-col gap-6 items-center animate-[fadeIn_300ms_ease-out_1800ms_forwards]">
+            <span className="uppercase text-5xl">
+              {result == 1 ? "You win" : result == 0 ? "Draw" : "You Lose"}
+            </span>
+            <Button
+              onPress={() => playAgain(result)}
+              className="bg-white text-dark-text rounded-lg px-6 py-2 text-xl"
+            >
+              Play Again
+            </Button>
           </div>
-          <span>You Picked</span>
-          <span>The House Picked</span>
-          <span>Result</span>
-          <Button>Play Again</Button>
         </div>
       )}
     </section>

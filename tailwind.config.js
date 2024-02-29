@@ -23,6 +23,19 @@ export default {
       fontFamily: {
         BarlowSemiCondensed: ["BarlowSemiCondensed", "sans-serif"],
       },
+      keyframes: {
+        fadeIn: {
+          "0%": {
+            opacity: "0",
+          },
+          "50%": {
+            opacity: ".5",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
+      },
     },
   },
   plugins: [],
