@@ -12,31 +12,31 @@ const Step1: React.FunctionComponent<Step1Props> = ({ handleSelection }) => {
         onPress={() => handleSelection(0)}
         className="absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 "
       >
-        <Selection selection={0}></Selection>
+        <Selection winner={false} selection={0}></Selection>
       </Button>
       <Button
         onPress={() => handleSelection(1)}
         className="absolute top-0 translate-y-1/2 right-0 translate-x-1/2 "
       >
-        <Selection selection={1}></Selection>
+        <Selection winner={false} selection={1}></Selection>
       </Button>
       <Button
         onPress={() => handleSelection(2)}
         className="absolute bottom-0 right-0 translate-y-1/2 "
       >
-        <Selection selection={2}></Selection>
+        <Selection winner={false} selection={2}></Selection>
       </Button>
       <Button
         onPress={() => handleSelection(3)}
         className="absolute bottom-0 left-0 translate-y-1/2 "
       >
-        <Selection selection={3}></Selection>
+        <Selection winner={false} selection={3}></Selection>
       </Button>
       <Button
         onPress={() => handleSelection(4)}
         className="absolute top-0 translate-y-1/2 left-0 -translate-x-1/2 "
       >
-        <Selection selection={4}></Selection>
+        <Selection winner={false} selection={4}></Selection>
       </Button>
     </div>
   );

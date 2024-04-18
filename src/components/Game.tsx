@@ -39,11 +39,14 @@ const Game: React.FunctionComponent<GameProps> = ({ setScore }) => {
         <div className="flex flex-col gap-20 w-full">
           <div className="flex flex-row items-center justify-between gap-20">
             <div className="flex flex-col gap-8">
-              <Selection selection={selection}></Selection>
+              <Selection winner={result == 1} selection={selection}></Selection>
               <span className="uppercase text-lg">You Picked</span>
             </div>
             <div className="opacity-0 flex flex-col gap-8 items-center animate-[fadeIn_300ms_ease-out_900ms_forwards]">
-              <Selection selection={houseSelection}></Selection>
+              <Selection
+                winner={result == -1}
+                selection={houseSelection}
+              ></Selection>
               <span className="uppercase text-lg text-center">
                 The House Picked
               </span>

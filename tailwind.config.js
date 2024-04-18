@@ -19,6 +19,8 @@ export default {
         header: "#606e85",
         "radial-1": "#1f3756",
         "radial-2": "#141539",
+        shadow1: "#ffffff",
+        shadow2: "#ffffff",
       },
       fontFamily: {
         BarlowSemiCondensed: ["BarlowSemiCondensed", "sans-serif"],
